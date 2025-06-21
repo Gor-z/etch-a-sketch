@@ -2,6 +2,7 @@ const frame = document.querySelector('#frame')
 const sizeRage = document.querySelector('#canvas-size')
 const sizeNumber = document.querySelector('#canvas-size-number')
 
+let tool = 'pencil'
 let CellsPerRow = 16
 
 const createCanvasCells = (size) => {
@@ -11,11 +12,28 @@ const createCanvasCells = (size) => {
         cell.classList.add('cell')
         cell.style.width = `calc(100% / ${CellsPerRow})`
         cell.addEventListener('mouseover', () => {
-            cell.style.backgroundColor = 'black'
+            switch (tool) {
+                case 'pencil':
+                    cell.style.backgroundColor = 'black'
+                    break;
+                case 'rainbow':
+                    cell.style.backgroundColor = getRandomColor()
+                default:
+                    break;
+            }
         })
         frame.appendChild(cell)
     }
 }
+
+const getRandomColor = () => {
+    const red = Math.floor(Math.random() * 256)
+    const green = Math.floor(Math.random() * 256)
+    const blue = Math.floor(Math.random() * 256)
+
+    return `rgb(${red}, ${green}, ${blue})`
+}
+
 
 sizeRage.addEventListener('change', () => {
     console.log(sizeRage.value);
@@ -23,6 +41,8 @@ sizeRage.addEventListener('change', () => {
     sizeNumber.textContent = `${CellsPerRow} x ${CellsPerRow}`
     createCanvasCells(CellsPerRow * CellsPerRow)
 })
+
+
 
 createCanvasCells(CellsPerRow * CellsPerRow)
 
