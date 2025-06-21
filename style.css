@@ -47,3 +47,7 @@ body{
 input[type="range"]{
     accent-color: black;
 }
+
+.active{
+    border: 2px solid black;
+}
