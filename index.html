@@ -10,7 +10,12 @@
 <body>
     <div id="content">
         <div id="tools">
-            <div>
+            <div id="menu">
+                <button id="pencil-tool" class="active">Pencil</button>
+                <button id="rainbow-tool">Rainbow</button>
+                <input type="color" name="color-tool" id="color-tool">
+            </div>
+            <div id="size-tool">
                 <input type="range" name="canvas-size" id="canvas-size" min="16" max="128" step="16" value="16">
                 <div id="canvas-size-number">16 x 16</div>
             </div>
